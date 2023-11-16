@@ -1,0 +1,17 @@
+import 'dart:convert';
+import 'dart:io';
+import 'package:ecommerce_app/models/product.dart';
+import 'package:http/http.dart' as http;
+
+class ProductService {
+  final _baseUrl = 'https://plain-marbled-muskox.glitch.me/shoes';
+
+  Future<List> getAll() async {
+    http.Response response = await http.get(Uri.parse(_baseUrl));
+    if (response.statusCode == HttpStatus.ok) {
+      final List jsonResponse = json.decode(response.body);
+      return jsonResponse.map((e) => Product.fromJson(e)).toList();
+    }
+    return [];
+  }
+}

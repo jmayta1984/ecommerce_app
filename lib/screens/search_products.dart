@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/widgets/product_list.dart';
 import 'package:flutter/material.dart';
 
 class SearchProducts extends StatefulWidget {
@@ -11,7 +12,7 @@ class _SearchProductsState extends State<SearchProducts> {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text("Shoes"),
+      child: ProductList(),
     );
   }
 }
