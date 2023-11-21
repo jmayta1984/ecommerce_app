@@ -14,4 +14,13 @@ class ProductService {
     }
     return [];
   }
+
+  Future<List> getByName(String name) async {
+    http.Response response = await http.get(Uri.parse('$_baseUrl?name_like=$name'));
+    if (response.statusCode == HttpStatus.ok) {
+      final List jsonResponse = json.decode(response.body);
+      return jsonResponse.map((e) => Product.fromJson(e)).toList();
+    }
+    return [];
+  }
 }
